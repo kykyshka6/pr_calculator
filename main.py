@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
@@ -52,3 +53,5 @@ async def delete_operation(operation_id: int):
     else:
         raise HTTPException(status_code=404, detail="Запись с указанным ID не найдена")
 
+if __name__ == '__main__':
+    uvicorn.run("main:app", host='127.0.0.1', port=8080, reload=True)
